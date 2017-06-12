@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppService } from 'app/app.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  message: string
+
+  constructor(service: AppService) {
+    service.messageChanged$.subscribe(message => this.message = message);
+  }
 }
